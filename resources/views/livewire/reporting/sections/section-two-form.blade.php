@@ -200,6 +200,20 @@
 						    </tbody>
 						</table>
 					</div>
+					@php $extQuestionId = 264; @endphp
+					<div class="form-group">
+                        <label for="user_type" class="control-label"> Established Posts Vacant at 31 December 2023 :</br><small>(Please list each post title per row)</small></label></br>
+
+                        @if(isset($questions[$extQuestionId]) && count($questions[$extQuestionId]))
+						    @foreach($questions[$extQuestionId] as $index => $row)
+						        @if(isset($row) && !empty($row)) 
+		                            - {{$row}}<hr class="m-1 p-1">
+		                        @endif
+						    @endforeach
+						@else
+						    -
+						@endif
+                    </div>
 				</div>
 	        </div>
 	        @php $questionId = 59; @endphp

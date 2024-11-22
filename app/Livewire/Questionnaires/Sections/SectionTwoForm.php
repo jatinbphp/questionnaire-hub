@@ -97,6 +97,14 @@ class SectionTwoForm extends Component
         }
         $questionId++;
 
+        $extQuestionId = 264;
+        $rules = [
+            "questions.$extQuestionId" => 'required|array|min:1',
+        ];
+        $messages = [
+            "questions.$extQuestionId.required" => "The field is required.",
+        ];
+
         $rules["questions.$questionId.medical_school"] = 'required|in:Yes,No';
         $messages["questions.$questionId.medical_school.required"] = "This field is required.";                
         $questionId++;
@@ -235,5 +243,17 @@ class SectionTwoForm extends Component
             }
         }
         $this->questions[71][$yearValue] = number_format($seedFunding, 0, '.', ',');
+    }
+
+    public function addEstablishedRow($questionId){
+        if (!isset($this->questions[$questionId])) {
+            $this->questions[$questionId] = [];
+        }
+
+        if (empty($this->questions[$questionId])) {
+            $this->questions[$questionId] = ['', ''];
+        } else {
+            $this->questions[$questionId][] = '';
+        }
     }
 }

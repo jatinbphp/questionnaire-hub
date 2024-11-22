@@ -123,7 +123,7 @@
                     </div>
                 	
                 	<div class="form-group">
-						<h6 class="text-bold mb-0">Agree : </br><small>Detail the funding received, including sources and if possible, the amounts (both research and technology development funding)</small></h6>
+						<h6 class="text-bold mb-0">Agree : </br><small>Please provide a caption for the image(s) and ensure that subjects and copyright holder have provided their permission for the photograph to be published.</small></h6>
 
                         @if(isset($questions[$questionId]) && $questions[$questionId]==true)
                             {!!$greenTick!!}
@@ -135,7 +135,7 @@
                 	</div>
 
 					<div class="form-group">
-						<h6 class="text-bold mb-0">Images : </br><small>Please upload suitable high-resolution images associated with your success story, captured during or after the story. The image can be that of a product, team, team member or anyone or anything positively associated with the story. Please provide a caption for the image(s) and <u>ensure that subjects and copyright holder have provided their permission for the photograph to be published.</u></small></h6>
+						<h6 class="text-bold mb-0">Images : </br><small>Please upload suitable high-resolution images associated with your success story, captured during or after the story. The image can be that of a product, team, team member or anyone or anything positively associated with the story.</small></h6>
 
                         <div id="imagePreviewContainer" class="image-preview-grid">                            
                             @if (isset($questions[$questionId]))

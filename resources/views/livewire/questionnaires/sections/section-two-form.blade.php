@@ -297,9 +297,29 @@
 						    <button type="button" wire:click="addNewRow({{$questionId}})" class="btn btn-primary">Add Row</button>
 						</div>
 					</div>
+
+					@php
+					$extQuestionId = 264;
+					@endphp
+					<div class="form-group">
+			            <label for="user_type" class="control-label"> Established Posts Vacant at 31 December 2023 :</br><small>(Please list each post title per row)</small></label>
+			         
+			            @if(isset($questions[$extQuestionId]) && count($questions[$extQuestionId]))
+						    @foreach($questions[$extQuestionId] as $index => $row)
+						        <input type="text" id="{{$extQuestionId}}" class="form-control mb-2" wire:model="questions.{{$extQuestionId}}.{{$index}}" placeholder="Please Enter">
+						    @endforeach
+						@else
+						    <input type="text" id="fullname-0" class="form-control mb-2" wire:model="questions.{{$extQuestionId}}.0" placeholder="Please Enter">
+						@endif
+						<button type="button" wire:click="addEstablishedRow({{$extQuestionId}})" class="btn btn-primary">Add Row</button>
+
+            			@error("questions.{$extQuestionId}")
+                            <small class="text-danger w-100 d-block"><strong>{{ $message }}</strong></small>
+                        @enderror
+			        </div>
 				</div>
 	        </div>
-	        @php $questionId = 59; @endphp
+	        @php $questionId = 59; @endphp 
 	        <div class="card card-info card-outline">
 			    <div class="card-header">
 			        <h6 class="text-bold mb-0">2.3 Indicate the total institutional <span data-toggle=tooltip data-placement=top title='The expenditure incurred in performing research and development (R&D) activities, whether funded by the institution that conducts the R&D, external funders, customers, public funding agencies or any other source. '>RESEARCH AND DEVELOPMENT EXPENDITURE</span> per annum (*estimate total allowed)</h6>
