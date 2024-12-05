@@ -511,7 +511,7 @@
 								        <th>{!! $value !!}</th>
 								        @foreach (getYears() as $year)
 								            <td>
-							            	 	<input class="form-control" oninput="formatNumber(this)" type="text" wire:model="questions.{{ $questionId }}.{{ $year }}" @if(!in_array($key,[2])) wire:blur="updateBenifitShareTotal({{$year}})" @endif @if($key==2) readonly @endif>
+							            	 	<input class="form-control" oninput="formatNumber(this)" type="text" wire:model="questions.{{ $questionId }}.{{ $year }}">
 								            	@error("questions.{$questionId}.{$year}")
 						                            <small class="text-danger w-100 d-block"><strong>{{ $message }}</strong></small>
 						                        @enderror
