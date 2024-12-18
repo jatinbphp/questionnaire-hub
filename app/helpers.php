@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use App\Models\QuestionAnswer;
+use App\Models\Common;
 use App\Models\InstitutionsCompletedSection;
 
 if (!function_exists('formatCreatedAt')) {
@@ -51,6 +52,31 @@ if (!function_exists('getSectionWiseFormData')) {
         }
         $questionAnswers = QuestionAnswer::where('institution_id', $institutionId)->where('section_id', $sectionId)->orderBy('question_id', 'ASC')->get();
         $questionsData = ($questionAnswers ? $questionAnswers->toArray() : []);
+
+        if(!$questionsData || !count($questionsData)){
+            return [];
+        }
+
+        $questions = [];
+
+        foreach ($questionsData as $data) {
+            $questionId = $data['question_id'] ?? 0;
+            if(!$questionId){
+                continue;
+            }
+            $answer = (isset($data['answers']) && $data['answers']) ? json_decode($data['answers'], 1) : [];
+            
+            $questions[$questionId] = $answer;
+        }
+        return $questions;
+    }
+}
+
+if (!function_exists('getSectionWiseData')) {
+    function getSectionWiseData($sectionId){
+        $questionAnswers = QuestionAnswer::where('section_id', $sectionId)->orderBy('question_id', 'ASC')->get();
+        $questionsData = ($questionAnswers ? $questionAnswers->toArray() : []);
+        $fectors = Common::getFactors();
 
         if(!$questionsData || !count($questionsData)){
             return [];

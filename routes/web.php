@@ -19,6 +19,7 @@ use App\Livewire\Users\UserShow;
 use App\Livewire\Questionnaires\QuestionnaireForm;
 use App\Livewire\Reporting\ReportingList;
 use App\Livewire\Reporting\ReportingShow;
+use App\Livewire\AdvanceStats\AdvanceStats;
 use App\Livewire\PageNotFound;
 use App\Http\Controllers\CacheController;
 
@@ -32,7 +33,7 @@ if (App::environment('local')) {
 
 if (App::environment('production')) {
     Livewire::setUpdateRoute(function($handle) {
-        return Route::get('/satts/livewire/update', $handle);
+        return Route::get('/livewire/update', $handle);
     });
 }
 
@@ -67,6 +68,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/{id}/view', InstitutionShow::class)->name('show');
             Route::delete('/{id}/delete', [InstitutionList::class, 'deleteRecord'])->name('destroy');
             Route::get('/institutions-data', [InstitutionList::class, 'getInstitutionsData'])->name('data');
+            Route::get('/institutions-report', [InstitutionList::class, 'getInstitutionsReport'])->name('report');
             Route::get('/{id}/user-data', [InstitutionShow::class, 'getInstitutionsUserData'])->name('user.data');
         });
 
@@ -75,6 +77,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/{id}/{section_id}/view', ReportingShow::class)->name('show');
             Route::get('/reporting-data', [ReportingList::class, 'getInstitutionsData'])->name('data');
         });
+
+        Route::prefix('avance-stats')->name('advance.')->group(function () {
+            Route::get('/{section_id}', AdvanceStats::class)->name('list');
+        });
+
     });
 
     Route::middleware('role:user,submitter')->group(function () {

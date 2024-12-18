@@ -44,6 +44,13 @@
                             <p>Reporting</p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('advance.list',['section_id'=>1]) }}" class="nav-link @if(isset($menu) && $menu=='Advance Stats') active @endif" wire:navigate>
+                            <i class="nav-icon fa fa-percent"></i>
+                            <p>Advance Stats</p>
+                        </a>
+                    </li>
                 @endif
                 @if (Auth::user() && in_array(Auth::user()->role, ['user', 'submitter']))
                     <li class="nav-item">
