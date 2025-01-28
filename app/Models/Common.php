@@ -349,7 +349,7 @@ class Common extends Model
 
     public static function getSingleJurisdictionPatents(){
         return [
-            'Total number of patents with only a <span data-toggle="tooltip" data-placement="top" title="A patent in respect of an invention that has been granted in any territory.">GRANTED PATENT</span> in South Africa (no other applications pending, relying on South African protection only)',
+            'Total number of patents in the portfolio with only a <span data-toggle="tooltip" data-placement="top" title="A patent in respect of an invention that has been granted in any territory.">GRANTED PATENT</span> in South Africa (no other applications pending, relying on South African protection only)',
         ];
     }
 
@@ -423,7 +423,7 @@ class Common extends Model
 
     public static function getNonPatentFamily(){
         return [
-            'Total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> PATENT FAMILY(/IES) in the portfolio with at least one jurisdiction granted',
+            'Total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> <span data-toggle="tooltip" data-placement="top" title="A group comprising a number of corresponding patents and/or patent applications, filed in one or more territories in respect of the same invention, all claiming priority from the same NEW PATENT APPLICATION.">PATENT FAMILY(/IES)</span> in the portfolio with at least one jurisdiction granted',
         ];
     }
 
@@ -436,25 +436,25 @@ class Common extends Model
     public static function getNonTradeMarkPortfolio(){
         return [
             '3.13.1 Indicate the total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> <b>NEW</b> TRADE MARK APPLICATIONS filed',
-            '3.13.2. Indicate the total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> <b>GRANTED</b> TRADE MARK registrations',
+            '3.13.2. Indicate the total number of <span data-toggle="tooltip" data-placement="top" title="A registration of a trade mark that has been granted in any territory, irrespective of the number of classes covered by that registration.">GRANTED TRADE MARK</span> registrations',
             '3.13.2.1. Of these, how many were granted in South Africa',
-            '3.13.3. What is the total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> GRANTED TRADE MARKS within the portfolio managed by the <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span>',
+            '3.13.3. What is the total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> <span data-toggle="tooltip" data-placement="top" title="A registration of a trade mark that has been granted in any territory, irrespective of the number of classes covered by that registration.">GRANTED TRADE MARKS</span> within the portfolio managed by the <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span>',
         ];
     }
 
     public static function getProductServices(){
         return [
-            '3.14.1. Indicate the total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> NEW DESIGN APPLICATIONS filed',
-            '3.14.2. Indicate total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> GRANTED DESIGNS registered',
-            '3.14.2. Indicate total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> GRANTED DESIGNS registered',
+            '3.14.1. Indicate the total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> <span data-toggle="tooltip" data-placement="top" title="An application for registration of a functional/aesthetic design, which does not claim priority from any other application.">NEW DESIGN APPLICATIONS</span> filed',
+            '3.14.2. Indicate total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> <span data-toggle="tooltip" data-placement="top" title="A registration for an aesthetic or functional design that has been granted in any territory.">GRANTED DESIGNS</span> registered',
+            '3.14.2. Indicate total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> <span data-toggle="tooltip" data-placement="top" title="A registration for an aesthetic or functional design that has been granted in any territory.">GRANTED DESIGNS</span> registered',
             '3.14.2.1. Of these, how many were granted in South Africa',
         ];
     }
 
     public static function getPlantBreedersIprAct(){
         return [
-            '3.15.1. Total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> NEW PBR APPLICATIONS filed',
-            '3.15.2. Total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> GRANTED PBR registrations',
+            '3.15.1. Total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> <span data-toggle="tooltip" data-placement="top" title="An application for protection of a plant variety by registration of a plant breeders’ right, which does not claim priority from any other application.">NEW PBR APPLICATIONS</span> filed',
+            '3.15.2. Total number of <span data-toggle="tooltip" data-placement="top" title="Falling outside the scope of the IPR ACT.">NON-IPR ACT</span> <span data-toggle="tooltip" data-placement="top" title="A registration of a plant breeders’ right that has been granted in any territory.">GRANTED PBR</span> registrations',
             '3.15.2.1. Of these, how many were granted in South Africa',
         ];
     }
@@ -567,19 +567,19 @@ c)	Any institution identified as such by the Minister under section 3 (2) of the
     // Section 4B
     public static function getNonIprActActLicences(){
         return [
-            'Total number of NON-IPR ACT LICENCES executed',
+            'Total number of <span data-toggle=tooltip data-placement=top title="Falling outside the scope of the IPR ACT">NON IPR ACT</span> <span data-toggle=tooltip data-placement=top title="A transaction whereby part or all of the rights to a DISCLOSURE, are granted to another party, whether on an EXCLUSIVE or NON-EXCLUSIVE basis, and that is executed with the purpose of that IP being commercialised.">LICENCES</span> executed',
         ];
     }
 
     public static function getNonIprActActAssignments(){
         return [
-            'Total number of NON-IPR ACT ASSIGNMENTS executed',
+            'Total number of <span data-toggle=tooltip data-placement=top title="Falling outside the scope of the IPR ACT">NON IPR ACT</span> <span data-toggle=tooltip data-placement=top title="A transaction whereby all rights, title and interest in and to IP, is transferred to another party.">ASSIGNMENTS</span> executed',
         ];
     }
 
     public static function getNonIprActActTransaction(){
         return [
-            'Total NON-IPR ACT TRANSACTION REVENUE',
+            'Total <span data-toggle=tooltip data-placement=top title="Falling outside the scope of the IPR ACT">NON IPR ACT</span> <span data-toggle=tooltip data-placement=top title="Invoiced revenue (turnover) from the sale of products or services.">TRANSACTION REVENUE</span>',
         ];
     }
 
@@ -598,15 +598,15 @@ c)	Any institution identified as such by the Minister under section 3 (2) of the
         return [
             '5.2. Total number of <span data-toggle="tooltip" data-placement="top" title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> incorporated',
             'Of these, how many does your institution:',
-            '5.2.1. Hold only EQUITY based on the <span data-toggle="tooltip" data-placement="top" title="A LICENCE, OPTION or ASSIGNMENT or combination of these as applicable that is executed with the purpose of commercialising IP.">IP TRANSACTION</span> (directly or through an institution subsidiary)',
+            '5.2.1. Hold only <span data-toggle="tooltip" data-placement="top" title="An ownership interest in a company (e.g. shares).">EQUITY</span> based on the <span data-toggle="tooltip" data-placement="top" title="A LICENCE, OPTION or ASSIGNMENT or combination of these as applicable that is executed with the purpose of commercialising IP.">IP TRANSACTION</span> (directly or through an institution subsidiary)',
             '5.2.2. Only receive (or potentially receive) <span data-toggle="tooltip" data-placement="top" title="The gross revenue received that is due to your institution only as consideration in an IP TRANSACTION such as licence issue fees, payments under options or on assignment, milestones or minimum payments - also referred to as annual minimums, running royalties, termination payments.">IP TRANSACTION REVENUE</span>',
-            '5.2.3. Hold EQUITY based on the IP transaction and receive (or potentially receive) <span data-toggle="tooltip" data-placement="top" title="The gross revenue received that is due to your institution only as consideration in an IP TRANSACTION such as licence issue fees, payments under options or on assignment, milestones or minimum payments - also referred to as annual minimums, running royalties, termination payments.">IP TRANSACTION REVENUE</span>',
+            '5.2.3. Hold <span data-toggle="tooltip" data-placement="top" title="An ownership interest in a company (e.g. shares).">EQUITY</span> based on the IP transaction and receive (or potentially receive) <span data-toggle="tooltip" data-placement="top" title="The gross revenue received that is due to your institution only as consideration in an IP TRANSACTION such as licence issue fees, payments under options or on assignment, milestones or minimum payments - also referred to as annual minimums, running royalties, termination payments.">IP TRANSACTION REVENUE</span>',
             '5.2.4. Have their primary location in the province where your institution has its headquarters',
             '5.3. Total FTEs employed by all <span data-toggle="tooltip" data-placement="top" title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> <br> <i>(*estimate numbers acceptable)',
-            '5.3.1. Of these, how many are IP CREATORS/ENABLERS',
-            '5.4. Number of IP CREATORS/ENABLERS supporting (part-time) the <span data-toggle=tooltip data-placement=top title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> (e.g. advisory panel member, technical consultant, board member, shareholder, director etc) <br> <i>(*estimate numbers acceptable)</i>',
-            '5.5. Number of IP CREATORS/ENABLERS that are Directors within the <span data-toggle="tooltip" data-placement="top" title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> <br> <i>(*estimate numbers acceptable)</i>',
-            '5.6. Number of IP CREATORS/ENABLERS that received EQUITY in the <span data-toggle="tooltip" data-placement="top" title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> <br> <i>(*estimate numbers acceptable)</i>',
+            '5.3.1. Of these, how many are <span data-toggle="tooltip" data-placement="top" title="A person as defined in the IPR Act, who is involved in the conception of intellectual property, specifically one who is identifiable as such for the purposes of obtaining statutory protection and enforcement of intellectual property rights, where applicable.">IP CREATORS</span>/<span data-toggle="tooltip" data-placement="top" title="A person who does not meet established legal requirements to qualify as an IP CREATOR but who is recognised by an institution as having contributed to the development and/or commercialisation of the IP.">ENABLERS</span>',
+            '5.4. Number of <span data-toggle="tooltip" data-placement="top" title="A person as defined in the IPR Act, who is involved in the conception of intellectual property, specifically one who is identifiable as such for the purposes of obtaining statutory protection and enforcement of intellectual property rights, where applicable.">IP CREATORS</span>/<span data-toggle="tooltip" data-placement="top" title="A person who does not meet established legal requirements to qualify as an IP CREATOR but who is recognised by an institution as having contributed to the development and/or commercialisation of the IP.">ENABLERS</span> supporting (part-time) the <span data-toggle=tooltip data-placement=top title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> (e.g. advisory panel member, technical consultant, board member, shareholder, director etc) <br> <i>(*estimate numbers acceptable)</i>',
+            '5.5. Number of <span data-toggle="tooltip" data-placement="top" title="A person as defined in the IPR Act, who is involved in the conception of intellectual property, specifically one who is identifiable as such for the purposes of obtaining statutory protection and enforcement of intellectual property rights, where applicable.">IP CREATORS</span>/<span data-toggle="tooltip" data-placement="top" title="A person who does not meet established legal requirements to qualify as an IP CREATOR but who is recognised by an institution as having contributed to the development and/or commercialisation of the IP.">ENABLERS</span> that are Directors within the <span data-toggle="tooltip" data-placement="top" title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> <br> <i>(*estimate numbers acceptable)</i>',
+            '5.6. Number of <span data-toggle="tooltip" data-placement="top" title="A person as defined in the IPR Act, who is involved in the conception of intellectual property, specifically one who is identifiable as such for the purposes of obtaining statutory protection and enforcement of intellectual property rights, where applicable.">IP CREATORS</span>/<span data-toggle="tooltip" data-placement="top" title="A person who does not meet established legal requirements to qualify as an IP CREATOR but who is recognised by an institution as having contributed to the development and/or commercialisation of the IP.">ENABLERS</span> that received <span data-toggle="tooltip" data-placement="top" title="An ownership interest in a company (e.g. shares).">EQUITY</span> in the <span data-toggle="tooltip" data-placement="top" title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> <br> <i>(*estimate numbers acceptable)</i>',
         ];
     }
 
@@ -618,8 +618,8 @@ c)	Any institution identified as such by the Minister under section 3 (2) of the
 
     public static function getRevenueReceived(){
         return [
-            '5.8.1. attributed to  CASHED-IN EQUITY',
-            '5.8.2. attributed to DIVIDENDS'
+            '5.8.1. attributed to  <span data-toggle="tooltip" data-placement="top" title="The amount received by a seller in consideration for the sale of some or all of its shares held in a company, less the amount paid by the seller (if any) to acquire that equity.">CASHED-IN EQUITY</span>',
+            '5.8.2. attributed to <span data-toggle="tooltip" data-placement="top" title="An amount distributed from a portion of companies earnings (profits), in cash, to holders of shares entitled to receive dividends.">DIVIDENDS</span>'
         ];
     }
     
@@ -632,19 +632,19 @@ c)	Any institution identified as such by the Minister under section 3 (2) of the
 
     public static function getNonIprActActionableDisclosuresSecond(){
         return [
-            '5.11. <span data-toggle="tooltip" data-placement="top" title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> were still OPERATIONAL at financial year-end',
-            '5.12. Of those still OPERATIONAL, please indicate how long they have been active',
+            '5.11. <span data-toggle="tooltip" data-placement="top" title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> were still <span data-toggle="tooltip" data-placement="top" title="An entity that operates to sell products or services.">OPERATIONAL</span> at financial year-end',
+            '5.12. Of those still <span data-toggle="tooltip" data-placement="top" title="An entity that operates to sell products or services.">OPERATIONAL</span>, please indicate how long they have been active',
             '5.12.1. Less than 1 year',
             '5.12.2. 1 to 5 years',
             '5.12.3. 6 to 10 years',
             '5.12.4. More than 10 years',
-            '5.13. <span data-toggle="tooltip" data-placement="top" title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> became NON-OPERATIONAL during the year'
+            '5.13. <span data-toggle="tooltip" data-placement="top" title="A company that has been incorporated at CIPC for the initial purpose of commercialising a DISCLOSURE through rights granted to the company by the institution in an IP TRANSACTION, but excluding a company that has had other business interests who later enter into an IP TRANSACTION to also commercialise an ACTIONABLE DISCLOSURES.">START-UP/SPIN OUT COMPANIES</span> became <span data-toggle="tooltip" data-placement="top" title="An entity that does not operate to sell products and/or services.">NON-OPERATIONAL</span> during the year'
         ];
     }
 
     public static function getRunnningRoyalties(){
         return [
-            '5.15. Total number of DISCLOSURES that have entered commercial use (evidenced by market research, RUNNING ROYALTIES received, or licensee diligence reporting)',
+            '5.15. Total number of <span data-toggle="tooltip" data-placement="top" title="A written disclosure of potential IP that is reported to the TTF  for evaluation by the TTF and for which, if warranted IP protection will be sought.  If governed by the IPR Act these are referred to as ACTIONABLE DISCLOSURES.">DISCLOSURE</span> that have entered commercial use (evidenced by market research, <span data-toggle="tooltip" data-placement="top" title="Royalties earned on an ongoing basis, which are tied to the sale of products or services related to IP that forms the subject of a licence, before any allocations or distributions are made, for example, of BENEFIT SHARE paid to IP CREATORS, payments to funding partners, collaborators or upstream licensors.">RUNNING ROYALTIES</span> received, or licensee diligence reporting)',
             'Of the total number reported, how many:',
             '5.15.1. Are only commercially available in South Africa?',
             '5.15.2. Are commercially available in South Africa and other countries too?',

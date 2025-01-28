@@ -1,0 +1,659 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Common extends Model
+{
+    use HasFactory;
+
+    const USERTYPE_SUBMITTER = 'submitter';
+    const USERTYPE_USER = 'user';
+
+    public static $userTypes = [
+        self::USERTYPE_SUBMITTER => 'Submitter',
+        self::USERTYPE_USER => 'User',
+    ];
+
+    const STATUS_ACTIVE = 'active';
+    const STATUS_INACTIVE = 'inactive';
+
+    public static $status = [
+        self::STATUS_ACTIVE => 'Active',
+        self::STATUS_INACTIVE => 'Inactive',
+    ];
+
+    const TITLE_MR = 'Mr.';
+    const TITLE_MRS = 'Mrs.';
+    const TITLE_MISS = 'Miss.';
+    const TITLE_MS = 'Ms.';
+    const TITLE_PROF = 'Prof.';
+    const TITLE_DR = 'Dr.';
+    const TITLE_OTHER = 'Other.';
+
+    public static $titles = [
+        self::TITLE_MR => 'Mr.',
+        self::TITLE_MRS => 'Mrs.',
+        self::TITLE_MISS => 'Miss.',
+        self::TITLE_MS => 'Ms.',
+        self::TITLE_PROF => 'Prof.',
+        self::TITLE_DR => 'Dr.',
+        self::TITLE_OTHER => 'Other.',
+    ];
+
+    const OPTION_YES = 'Yes';
+    const OPTION_NO = 'No';
+
+    public static $yes_no = [
+        self::OPTION_YES => 'Yes',
+        self::OPTION_NO => 'No',
+    ];
+
+    const POLiCY_GUIDELINE_OPTION1 = 1;
+    const POLiCY_GUIDELINE_OPTION2 = 2;
+    const POLiCY_GUIDELINE_OPTION3 = 3;
+
+    public static $policy_guideline = [
+        self::POLiCY_GUIDELINE_OPTION1 => 'Policy in place',
+        self::POLiCY_GUIDELINE_OPTION2 => 'Guideline in place',
+        self::POLiCY_GUIDELINE_OPTION3 => 'No policy or guideline in place',
+    ];
+
+    const IP_ENABLERS_OPTION1 = 1;
+    const IP_ENABLERS_OPTION2 = 2;
+
+    public static $ip_enablers_share = [
+        self::IP_ENABLERS_OPTION1 => 'Share in IP Creators’ Pool',
+        self::IP_ENABLERS_OPTION2 => 'Separate Provision',
+    ];
+
+    const APPROPRIATE_OPTION1 = 1;
+    const APPROPRIATE_OPTION2 = 2;
+    const APPROPRIATE_OPTION3 = 3;
+    const APPROPRIATE_OPTION4 = 4;
+    const APPROPRIATE_OPTION5 = 5;
+
+    public static $appropriate = [
+        self::APPROPRIATE_OPTION1 => 'Complex yet still efficient',
+        self::APPROPRIATE_OPTION2 => 'Simple yet generally inefficient',
+        self::APPROPRIATE_OPTION3 => 'No formal approval process in place',
+        self::APPROPRIATE_OPTION4 => 'Complex and inefficient',
+        self::APPROPRIATE_OPTION5 => 'Simple and efficient',
+    ];
+
+    const TTF_ACTIVITY1 = 1;
+    const TTF_ACTIVITY2 = 2;
+    const TTF_ACTIVITY3 = 3;
+    const TTF_ACTIVITY4 = 4;
+
+    public static $ttf_activities = [
+        self::TTF_ACTIVITY1 => 'Undertaken by TTF',
+        self::TTF_ACTIVITY2 => 'Outsourced by TTF',
+        self::TTF_ACTIVITY3 => 'Done elsewhere in institution',
+        self::TTF_ACTIVITY4 => 'Not done',
+    ];
+
+    //Section 1
+    public static function getFactors(){
+        return [
+            "INTERNAL FACTORS" => [
+                '1.1.1 Internal (institutional) individual relationships, for example relationships with innovative researchers',
+                '1.1.2 Support from institution’s executive/management',
+                '1.1.3 Awareness amongst research staff and students about the importance of disclosing and managing IP',
+                '1.1.4 Externally focussed marketing for IP/Technologies channels such as websites, brochures, etc',
+                '1.1.5 Internally focussed marketing for IP/Technologies channels, such as websites, bulk email, newsletters, guides, etc',
+                '1.1.6 Calculation and distribution of <span data-toggle="tooltip" data-placement="top" title="An amount allocated and distributed by an institution to an IP CREATOR in terms of section 10 of the IPR Act and/or an IP ENABLER in terms of that institution’s policies.">BENEFIT SHARE</span>',
+                '1.1.7 <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span> permitted by the institution to appoint suitable and sufficient number of <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TT</span> staff',
+                '1.1.8 <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span> permitted by the institution to negotiate and recommend an <span data-toggle="tooltip" data-placement="top" title="A LICENCE, OPTION or ASSIGNMENT or combination of these as applicable that is executed with the purpose of commercialising IP.">IP TRANSACTION</span>',
+                '1.1.9 <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span> permitted by the institution to establish START-UP/SPIN OUT COMPANIES',
+                '1.1.10 <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span> permitted by the institution to establish an incubator',
+                '1.1.11 Access to incubation space (either managed by <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span> or available externally) albeit not established by <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span>',
+            ],
+            "EXTERNAL FACTORS" => [
+                '1.1.12 A consultative engagement on national technology needs and challenges',
+                '1.1.13 A national online platform to showcase technologies beside Innovation bridge',
+                '1.1.14 A national technology showcasing event',
+                '1.1.15 An international platform to showcase technologies',
+                '1.1.16 <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span> engagements with industry (formal and informal)',
+            ]
+        ];
+    }
+
+    //section 2
+    public static function getIpManagementTasks(){
+        return [
+            "Administrative and IP Management" => [
+                "Identifying and sourcing DISCLOSURES",
+                "Conducting novelty searches",
+                "Managing process of IP registration, prosecution, and maintenance",
+                "Statutory Compliance (IPR Act disclosures, referrals etc)",
+                "Contract management for R&D",
+                "Contract management for TTA",
+                "Conducting institutional training/awareness workshops, seminars, etc. on IP and innovation",
+                "Dealing with open source, open access or open educational resources",
+                "Handling requests for publication of R&D outputs by institution or collaborators",
+                "Management of student entrepreneurship programmes",
+                "Engagement with industry – Building networks for collaboration",
+                "Handling copyright matters"
+            ],
+            "Commercialisation" => [
+                "Development of route-to-market/commercialisation strategy",
+                "Marketing of technologies",
+                "Deal structuring and negotiating an IP TRANSACTION",
+                "Establishing and supporting START-UP/SPIN OUT COMPANIES",
+                "Fundraising for technology development and commercialisation",
+                "Managing an institution incubator",
+                "Managing proof-of-concept, pre-seed or seed funding",
+                "Developing and managing social impact or community-based projects"
+            ],
+            "Enforcement" => [
+                "Monitoring infringement of institution’s IP",
+                "Ensuring institution’s freedom to operate (non-infringement of third-party IP)",
+                "Enforcing institution’s IP in infringement litigation"
+            ]
+        ];
+    }
+
+    public static function getStaffingTtf(){
+        return [
+            "Staff member #",
+            "(A) Employment contract",
+            "Gender",
+            "(B) Population group",
+            "(C) Highest qualification",
+            "(D) Undergraduate field",
+            "(C) Highest qualification",
+            "(D) Undergraduate field",
+            "(E) Professional Qualification",
+            "Years of TT experience",
+            "TT FTE",
+            "Other FTE",
+            "Total FTEs",
+        ];
+    }
+
+    //section 3
+    public static function getResearchDevelopment(){
+        return [
+            "RESEARCH AND DEVELOPMENT EXPENDITURE (including CLINICAL TRIAL expenditure)",
+        ];
+    }
+    
+    public static function getClinicalTrials(){
+        return [
+            "CLINICAL TRIAL expenditure",
+        ];
+    }
+
+    public static function getTechnologyTransferActivities(){
+        return [
+            "IP EXPENDITURE",
+            "LITIGATION EXPENDITURE",
+            "TT OPERATIONS EXPENDITURE (note that this includes expenditure on OPERATIONAL ACTIVITIES and COMMERCIALISATION ACTIVITIES)",
+        ];
+    }
+
+    public static function getIpTransactions(){
+        return [
+            "IP EXPENSE REIMBURSEMENT",
+        ];
+    }
+
+    public static function getSeedFunding(){
+        return [
+            "2.7.1.1 Amount of TIA SEED FUNDING awarded",
+            "2.7.1.2 Amount of SEED FUNDING from own institution awarded",
+            "2.7.1.3 Amount of other SEED FUNDING from other sources awarded",
+            "Total SEED FUNDING",
+        ];
+    }
+
+    public static function getAdditionalFunding(){
+        return [
+            'Strategic review funding (market research, technical due diligence, techno-economic feasibility analysis, business model analysis)',       
+            'Business development funding (including marketing and excluding human capital development)',
+            'To support TT OPERATIONS EXPENDITURE', 
+            'Funding to engage specialist resources, e.g. industry experts, mentors, etc',                    
+            'Early-stage development and translation of research outputs into prototypes and fundable ideas for commercialisation (Seed Funding)',           
+            'Further technology development and early commercialisation (Post Seed Funding)',
+            'Early-stage venture capital/ commercialisation funding',
+            'Support funding for incubation of start-up/spin-out companies',
+            'Funding for the formation or incorporation of START-UP/SPIN OUT COMPANIES ',
+            'Scaling up of START-UP/SPIN OUT COMPANIES (business strategy and customer track record established)',
+            'START-UP/SPIN OUT COMPANIES expansion funding, product optimisation or development of alternative/ additional products, increasing market share',
+            'Due diligence of licensee/assignee (pre-IP transaction)',                   
+            'Audit of license (post IP transaction)',
+        ];
+    }
+
+    public static function getStaffingOfTheTtf(){
+        return [
+            'Permanent',       
+            'Fixed Term Employee',
+            'Intern', 
+        ];
+    }
+
+    public static function getStaffingOfTheTtfB(){
+        return [
+            'African',       
+            'Coloured',
+            'Indian/Asian', 
+            'White',
+        ];
+    }
+
+    public static function getStaffingOfTheTtfC(){
+        return [
+            'PhD/Doctorate',       
+            'Masters',
+            'Hons', 
+            'Bachelors',
+            'Diploma',
+            'Other',
+            'School Leavers Certificate such as Matric or international equivalent (e.g. A or O levels)',
+            'Not Applicable',
+        ];
+    }
+
+    public static function getStaffingOfTheTtfD(){
+        return [
+            'Physical Sciences', 
+            'Life Sciences',
+            'Engineering and Technology',
+            'Medical and Health Sciences',
+            'Agricultural Sciences',
+            'Business/commerce',
+            'Educational sciences',    
+            'Law',
+            'Social Sciences',
+            'Humanities',
+            'Other',
+            'Not Applicable',
+        ];
+    }
+
+    public static function getStaffingOfTheTtfE(){
+        return [
+            'Registered Technology Transfer Professional', 
+            'Certified Licensing Professional)',
+            'Both',
+            'Other/none',
+        ];
+    }
+
+    public static function getStaffingOfTheTtfGender(){
+        return [
+            'Male', 
+            'Female',
+        ];
+    }
+
+    // Section 3A
+    public static function getActionableDisclosures(){
+        return [
+            '3.1.1 Indicate the total number of new ACTIONABLE DISCLOSURES reported to NIPMO',
+            '3.1.2 Total number of ACTIONABLE DISCLOSURES within the portfolio managed by the <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span>'
+        ];
+    }
+
+    public static function getPatentPortfolio(){
+        return [
+            '3.2.1 Total number of NEW PATENT APPLICATIONS filed <i>(auto summed for ease of reference)</i>',
+            'How many NEW PATENT APPLICATIONS filed were',
+            '3.2.1.1 SA PROVISIONAL PATENT APPLICATIONS',
+            '3.2.1.2 SA COMPLETE PATENT APPLICATIONS (as a FIRST FILING)',
+            '3.2.1.3  All other NEW PATENT APPLICATIONS filed (such as applications filed in a territory other than South Africa, as a FIRST FILING, provisional or complete patents,  or PCT, etc.)',
+        ];
+    }
+
+    public static function getPatentApplicationsReasons(){
+        return [
+            'Supporting data unavailable (e.g. inventor not available, technical information incomplete, further R&D required)',
+            'Lack of funding resources (including resources to appoint expertise to continue patent process)',
+            'Novelty search revealed lack of novelty or inventiveness',
+            'Assessment revealed lack of techno-economically viability',
+            'Market research revealed insufficient commercial opportunity',
+            'Other',
+        ];
+    }
+
+    public static function getPatentsGranted(){
+        return [
+            'Total number of GRANTED PATENTS',
+            'Of these, how many were',
+            'ARIPO Member States (count each member state separately) <a target="_blank" href="https://www.aripo.org/public/member-states">Member States - The African Regional Intellectual Property Organization (ARIPO)</a>',
+            'Australia',
+            'Brazil',
+            'Chile',
+            'China',
+            'European Members States (count each member state separately) <a target="_blank" href="https://www.epo.org/en/about-us/foundation/member-states">Member States European Patent Organisation</a>',
+            'Gulf Cooperation Council (GCC) Member States (count each member state separately) <a target="_blank" href="https://www.britannica.com/topic/Gulf-Cooperation-Council">Gulf Cooperation Council (GCC) Member Countries</a>',
+            'India',
+            'Japan',
+            'Russian Federation',
+            'South Africa',
+            'United Kingdom',
+            'United States of America',
+            'Other',
+        ];
+    }
+
+    public static function getPatentFamily(){
+        return [
+            'Total number of PATENT FAMILY(/IES) in the portfolio with at least one jurisdiction granted',
+        ];
+    }
+
+    public static function getSingleJurisdictionPatents(){
+        return [
+            'Total number of patents with only a GRANTED PATENT in South Africa (no other applications pending, relying on South African protection only)',
+        ];
+    }
+
+    public static function getTradeMarkPortfolio(){
+        return [
+            '3.3.1 Indicate the total number of <b>NEW</b> TRADE MARK APPLICATIONS filed',
+            '3.3.2. Indicate the total number of <b>GRANTED</b> TRADE MARK registrations',
+            '3.3.2.1. Of these, how many were granted in South Africa',
+            '3.3.3. What is the total number of GRANTED TRADE MARKS within the portfolio managed by the <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span>',
+        ];
+    }
+
+    public static function getDesignPortfolio(){
+        return [
+            '3.4.1. Indicate the total number of NEW DESIGN APPLICATIONS filed',
+            '3.4.2. Indicate total number of granted DESIGNS registered',
+            '3.4.2.1. Of these, how many were granted in South Africa',
+        ];
+    }
+
+    public static function getPlantBreeders(){
+        return [
+            '3.5.1. Total number of NEW PBR APPLICATIONS filed',
+            '3.5.2. Total number of GRANTED PBR registrations',
+            '3.5.2.1. Of these, how many were granted in South Africa',
+        ];
+    }
+
+    // Section 3B
+    public static function getNonIprActDisclosures(){
+        return [
+            '3.7.1. Total number of new NON-IPR ACT DISCLOSURES that the <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span> would consider actionable if the disclosed IP were subject to the IPR Act <i>(auto summed for ease of reference)</i>',
+            'Indicate how many are NON-IPR ACT DISCLOSURES due to the following reasons',
+            '3.7.1.1. IP was created before the IPR Act came into force (2 August 2010)',
+            '3.7.1.2. IP was not as a result of an R&D activity',
+            '3.7.1.3. R&D resulting in the IP was not publicly-funded (e.g. it was funded on a full cost basis, as defined in the IPR Act)',
+            '3.7.1.4. Other',
+        ];
+    }
+
+    public static function getNonIprActNewPatent(){
+        return [
+            '3.9.1 Total number of NON-IPR ACT NEW PATENT APPLICATIONS filed <i>(auto summed for ease of reference)</i>',
+            'How many NON-IPR ACT NEW PATENT APPLICATIONS filed were',
+            '3.9.1.1. SA PROVISIONAL PATENT APPLICATIONS',
+            '3.9.1.2. SA COMPLETE PATENT APPLICATIONS (as a FIRST FILING)',
+            '3.9.1.3. All other new PATENT APPLICATIONS filed as a FIRST FILING in a territory other South Africa, including PCT applications',
+        ];
+    }
+
+    public static function getNonPatentsGranted(){
+        return [
+            'Total number of NON-IPR ACT GRANTED PATENTS',
+            'Of these, how many were',
+            'ARIPO Member States (count each member state separately) <a target="_blank" href="https://www.aripo.org/public/member-states">Member States - The African Regional Intellectual Property Organization (ARIPO)</a>',
+            'Australia',
+            'Brazil',
+            'Chile',
+            'China',
+            'European Members States (count each member state separately) <a target="_blank" href="https://www.epo.org/en/about-us/foundation/member-states">Member States European Patent Organisation</a>',
+            'Gulf Cooperation Council (GCC) Member States (count each member state separately) <a target="_blank" href="https://www.britannica.com/topic/Gulf-Cooperation-Council">Gulf Cooperation Council (GCC) Member Countries</a>',
+            'India',
+            'Japan',
+            'Russian Federation',
+            'South Africa',
+            'United Kingdom',
+            'United States of America',
+            'Other',
+        ];
+    }
+
+    public static function getNonPatentFamily(){
+        return [
+            'Total number of NON-IPR ACT PATENT FAMILY(/IES) in the portfolio with at least one jurisdiction granted',
+        ];
+    }
+
+    public static function getNonSingleJurisdictionPatents(){
+        return [
+            'Total number of NON-IPR ACT patents with only a GRANTED PATENT in South Africa (no other applications pending, relying on South African protection only)',
+        ];
+    }
+
+    public static function getNonTradeMarkPortfolio(){
+        return [
+            '3.14.1 Indicate the total number of NON-IPR ACT <b>NEW</b> TRADE MARK APPLICATIONS filed',
+            '3.14.2. Indicate the total number of NON-IPR ACT <b>GRANTED</b> TRADE MARK registrations',
+            '3.14.2.1. Of these, how many were granted in South Africa',
+            '3.14.3. What is the total number of NON-IPR ACT GRANTED TRADE MARKS within the portfolio managed by the <span data-toggle="tooltip" data-placement="top" title="The function (be it an individual(s), a dedicated office, a regional office etc.) that manages and performs the TECHNOLOGY TRANSFER ACTIVITIES at the institution.">TTF</span>',
+        ];
+    }
+
+    public static function getProductServices(){
+        return [
+            '3.15.1. Indicate the total number of NON-IPR ACT NEW DESIGN APPLICATIONS filed',
+            '3.15.2. Indicate total number of NON-IPR ACT GRANTED DESIGNS registered',
+            '3.15.2. Indicate total number of NON-IPR ACT GRANTED DESIGNS registered',
+            '3.15.2.1. Of these, how many were granted in South Africa',
+        ];
+    }
+
+    public static function getPlantBreedersIprAct(){
+        return [
+            '3.16.1. Total number of NON-IPR ACT NEW PBR APPLICATIONS filed',
+            '3.16.2. Total number of NON-IPR ACT GRANTED PBR registrations',
+            '3.16.2.1. Of these, how many were granted in South Africa',
+        ];
+    }
+
+    // section 4A
+    public static function getOptions(){
+        return [
+            '4.2.1. Total number of OPTIONS granted',
+        ];
+    }
+
+    public static function getLicences(){
+        return [
+            '4.3.1. Total number of LICENCE agreements executed',
+        ];
+    }
+    
+    public static function getSouthAfricaData(){
+        return [
+            '4.3.2 Indicate the total number of LICENCES granting rights in South Africa',
+            '4.3.2.1 of the total number, how many where EXCLUSIVE LICENSES',
+            '4.3.2.1.1 of the EXCLUSIVE LICENCES, how many were granted to SOUTH AFRICAN ENTITY/IES',
+            '4.3.2.2 of the total number, how many where NON-EXCLUSIVE LICENSES',
+            '4.3.2.2.1 of the NON- EXCLUSIVE LICENCES, how many were granted to SOUTH AFRICAN ENTITY/IES'
+        ];
+    }
+
+    public static function getForeignJurisdiction(){
+        return [
+            '4.3.3. Indicate the total number of LICENCES granting rights in foreign jurisdictions',
+            '4.3.3.1 of this total number, how many where EXCLUSIVE LICENSES',
+            '4.3.3.1.1 of the EXCLUSIVE LICENCES, how many were granted to SOUTH AFRICAN ENTITY/IES',
+            '4.3.3.2 of this total number, how many where NON-EXCLUSIVE LICENSES',
+            '4.3.3.2.1 of the NON- EXCLUSIVE LICENCES, how many were granted to SOUTH AFRICAN ENTITY/IES'
+        ];
+    }
+
+    public static function getAssignments(){
+        return [
+            '4.4.1. Total number of ASSIGNMENTS executed',
+            'Of these, how many were:',
+            '4.4.4.1 ASSIGNMENTS to a SOUTH AFRICAN ENTITY/IES',
+        ];
+    }
+    
+    public static function getIpTransations(){
+        return [
+            '4.5.1 Based on the total number of <span data-toggle="tooltip" data-placement="top" title="A LICENCE, OPTION or ASSIGNMENT or combination of these as applicable that is executed with the purpose of commercialising IP.">IP TRANSACTIONS</span> executed with SOUTH AFRICAN ENTITY/IES<br> <i>(auto summed for ease of reference)</i>',
+            'Of the total number, how many were to:',
+            '4.5.1.1 START-UP/ SPIN OUT COMPANIES',
+            '4.5.1.2 SMMEs (other than START-UP/SPIN OUT COMPANIES)',
+            '4.5.1.3 LARGE COMPANIES',
+            'Of reported numbers in 4.4.1.1 to 4.4.1.3 above, how many were:',
+            '4.5.1.4 BLACK-OWNED ENTITIES',
+        ];
+    }
+
+    public static function getActionableDisclosuresIp(){
+        return [
+            '4.7.1 LICENSES (active, expired and terminated) as at 31 March 2023 for S1 INSTITUTIONS or 31 December 2023 for HEI’s?',
+            '4.7.1.1 Of these, how many LICENSES are still active (31 March 2023 for S1 INSTITUTIONS/ 31 Dec 2023 for HEI’s)?',
+            '4.7.2 ASSIGNMENT as at 31 March 2023 for S1 INSTITUTIONS or 31 December 2023 for HEI’s?',
+        ];
+    }
+
+    public static function getLicenseAssignment(){
+        return [
+            'Less than 2%',
+            '2% to 4%',
+            '5% to 7%',
+            '8% to 10%',
+            '11% to 15%',
+            '16% to 20%',
+            'More than 20%',
+        ];
+    }
+
+    public static function getIpTransactionRevnue(){
+        return [
+            '4.9 Total amount of IP transaction revenue <i>(auto summed for ease of reference)</i>',
+            'Indicate how much IP transaction revenue can be attributed to',
+            '4.9.1 RUNNING ROYALTIES',
+            '4.9.2 REGULAR FIXED LICENCE FEES',
+            '4.9.3 ONCE-OFF LICENCE FEES',
+            '4.9.4 IP SALE/ ASSIGNMENT CONSIDERATION',
+        ];
+    }
+
+    public static function getBenefitShare(){
+        return [
+            '4.11.1 Total number of IP CREATORS to whom <span data-toggle="tooltip" data-placement="top" title="An amount allocated and distributed by an institution to an IP CREATOR in terms of section 10 of the IPR Act and/or an IP ENABLER in terms of that institution’s policies.">BENEFIT SHARE</span> was paid',
+            '4.11.2 Total number of IP ENABLERS to whom <span data-toggle="tooltip" data-placement="top" title="An amount allocated and distributed by an institution to an IP CREATOR in terms of section 10 of the IPR Act and/or an IP ENABLER in terms of that institution’s policies.">BENEFIT SHARE</span> was paid',
+            '4.11.3 Total amount paid to IP CREATORS/ IP ENABLERS (Rand value)',
+        ];
+    }
+
+    public static function getRandValues(){
+        return [
+            'R6.707m',
+            'R6.969m',
+            'R7.103m',
+            'R6.952m',
+            'R7.000m',
+        ];
+    }
+    
+    // Section 4B
+    public static function getNonIprActActLicences(){
+        return [
+            'Total number of NON-IPR ACT LICENCES executed',
+        ];
+    }
+
+    public static function getNonIprActActAssignments(){
+        return [
+            'Total number of NON-IPR ACT ASSIGNMENTS executed',
+        ];
+    }
+
+    public static function getNonIprActActTransaction(){
+        return [
+            'Total NON-IPR ACT TRANSACTION REVENUE',
+        ];
+    }
+
+    public static function getRandValuesIpTransaTwo(){
+        return [
+            'R6.707m',
+            'R6.969m',
+            'R7.103m',
+            'R6.952m',
+            'R7.000m',
+        ];
+    }
+
+    //Section 5
+    public static function getNonActionableDisclosure(){
+        return [
+            '5.2. Total number of START-UP/SPIN OUT COMPANIES incorporated',
+            'Of these, how many does your institution:',
+            '5.2.1. Hold only EQUITY based on the <span data-toggle="tooltip" data-placement="top" title="A LICENCE, OPTION or ASSIGNMENT or combination of these as applicable that is executed with the purpose of commercialising IP.">IP TRANSACTION</span> (directly or through an institution subsidiary)',
+            '5.2.2. Only receive (or potentially receive) <span data-toggle="tooltip" data-placement="top" title="The gross revenue received that is due to your institution only as consideration in an IP TRANSACTION such as licence issue fees, payments under options or on assignment, milestones or minimum payments - also referred to as annual minimums, running royalties, termination payments.">IP TRANSACTION REVENUE</span>',
+            '5.2.3. Hold EQUITY based on the IP transaction and receive (or potentially receive) <span data-toggle="tooltip" data-placement="top" title="The gross revenue received that is due to your institution only as consideration in an IP TRANSACTION such as licence issue fees, payments under options or on assignment, milestones or minimum payments - also referred to as annual minimums, running royalties, termination payments.">IP TRANSACTION REVENUE</span>',
+            '5.2.4. Have their primary location in the province where your institution has its headquarters',
+            '5.3. Total FTEs employed by all START-UP/SPIN OUT COMPANIES <br> <i>(*estimate numbers acceptable)',
+            '5.3.1. Of these, how many are IP CREATORS/ENABLERS',
+            '5.4. Number of IP CREATORS/ENABLERS supporting (part-time) the START-UP/ SPIN OUT COMPANIES (e.g. advisory panel member, technical consultant, board member, shareholder, director etc) <br> <i>(*estimate numbers acceptable)</i>',
+            '5.5. Number of IP CREATORS/ENABLERS that are Directors within the START-UP/SPIN OUT COMPANIES <br> <i>(*estimate numbers acceptable)</i>',
+            '5.6. Number of IP CREATORS/ENABLERS that received EQUITY in the START-UP/SPIN OUT COMPANIES <br> <i>(*estimate numbers acceptable)</i>',
+        ];
+    }
+
+    public static function getRevenueData(){
+        return [
+            '5.7. Total annual REVENUE for all START-UP/SPIN OUT COMPANIES <br> <i>(*estimate numbers acceptable) 5.7.1 Are these numbers actual or estimated?</i>',
+        ];
+    }
+
+    public static function getRevenueReceived(){
+        return [
+            '5.8.1. attributed to  CASHED-IN EQUITY',
+            '5.8.2. attributed to DIVIDENDS'
+        ];
+    }
+    
+    public static function getNonIprActActionableDisclosuresFirst(){
+        return [
+            '5.10. How many START-UP/SPIN OUT COMPANIES has your institution formed since 2008?',
+            'Of the total number reported, how many:',
+        ];
+    }
+
+    public static function getNonIprActActionableDisclosuresSecond(){
+        return [
+            '5.11. START-UP/SPIN OUT COMPANIES were still OPERATIONAL at financial year-end',
+            '5.12. Of those still OPERATIONAL, please indicate how long they have been active',
+            '5.12.1. Less than 1 year',
+            '5.12.2. 1 to 5 years',
+            '5.12.3. 6 to 10 years',
+            '5.12.4. More than 10 years',
+            '5.13. START-UP/SPIN OUT COMPANIES became NON-OPERATIONAL during the year'
+        ];
+    }
+
+    public static function getRunnningRoyalties(){
+        return [
+            '5.15. Total number of DISCLOSURES that have entered commercial use (evidenced by market research, RUNNING ROYALTIES received, or licensee diligence reporting)',
+            'Of the total number reported, how many:',
+            '5.15.1. Are only commercially available in South Africa?',
+            '5.15.2. Are commercially available in South Africa and other countries too?',
+            '5.15.3. Have won international prizes or formal recognition – e.g. best new green technology?',
+        ];
+    }
+
+    const OPTION_ACTUAL = 'Actual';
+    const OPTION_ESTIMATED = 'Estimated';
+
+    public static $getTotalAnnualRevenueType = [
+        self::OPTION_ACTUAL => 'Actual',
+        self::OPTION_ESTIMATED => 'Estimated',
+    ];
+}

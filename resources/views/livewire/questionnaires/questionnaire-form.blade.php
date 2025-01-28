@@ -9,6 +9,32 @@
     ])
   
     <section class="container-fluid questionnaire-portal">
+
+        <div class="row">
+            <div class="col-md-12">
+                <button class="print-btn mb-2" onclick="printPage()">Print to PDF</button>
+                <style>
+                    .print-btn {
+                        padding: 10px 20px;
+                        font-size: 16px;
+                        color: #000;
+                        background-color: #f58220;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+                    .print-btn:hover {
+                        background-color: #007cb8;
+                    }
+                </style>
+                <script>
+                    function printPage() {
+                        window.print();
+                    }
+                </script>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-info">

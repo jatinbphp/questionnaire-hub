@@ -98,12 +98,8 @@ class SectionTwoForm extends Component
         $questionId++;
 
         $extQuestionId = 264;
-        $rules = [
-            "questions.$extQuestionId" => 'required|array|min:1',
-        ];
-        $messages = [
-            "questions.$extQuestionId.required" => "The field is required.",
-        ];
+        $rules["questions.$extQuestionId"] = 'required|array|min:1';
+        $messages["questions.$extQuestionId.required"] = "The field is required.";
 
         $rules["questions.$questionId.medical_school"] = 'required|in:Yes,No';
         $messages["questions.$questionId.medical_school.required"] = "This field is required.";                
@@ -141,8 +137,10 @@ class SectionTwoForm extends Component
             $questionId++;
         }
 
-        $rules["questions.$questionId"] = 'required';
-        $messages["questions.$questionId.required"] = 'This field is required.';
+        $rules["questions.$questionId"] = 'required_if:questions.67.seed_funding,Yes';
+        $messages["questions.$questionId.required_if"] = "This field is required.";
+        //$rules["questions.$questionId"] = 'required';
+        //$messages["questions.$questionId.required"] = 'This field is required.';
         $questionId++;
 
         for ($i = 73; $i <= 85; $i++) {
@@ -229,7 +227,7 @@ class SectionTwoForm extends Component
         $ttfFte = floatval($this->questions[$questionId][$index]['ttfFte']);
         $otherFte = floatval($this->questions[$questionId][$index]['otherFte']);
 
-        $this->questions[$questionId][$index]['totalFte'] = $ttfFte + $otherFte;
+        $this->questions[$questionId][$index]['totalFte'] = round($ttfFte + $otherFte,1);
     }
 
     public function updateSeedFundingList($yearValue){

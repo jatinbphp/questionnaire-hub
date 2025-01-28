@@ -278,11 +278,11 @@
 								                @error("questions.$questionId.$index.years") <span class="text-danger">{{ $message }}</span> @enderror
 								            </td>
 								            <td>
-								                <input type="number" min="0" max="1" step="1" oninput="formatNumber(this, 1)" wire:model.defer="questions.{{$questionId}}.{{ $index }}.ttfFte" class="form-control number" wire:blur="updateFte({{$questionId}}, {{$index}})">
+								                <input type="number" min="0" max="1" step="0.01" oninput="formatNumber(this, 1)" wire:model.defer="questions.{{$questionId}}.{{ $index }}.ttfFte" class="form-control number" wire:blur="updateFte({{$questionId}}, {{$index}})">
 								                @error("questions.$questionId.$index.ttfFte") <span class="text-danger">{{ $message }}</span> @enderror
 								            </td>
 								            <td>
-								                <input  type="number" min="0" max="1" step="1" oninput="formatNumber(this, 1)" wire:model.defer="questions.{{$questionId}}.{{ $index }}.otherFte" class="form-control number" wire:blur="updateFte({{$questionId}}, {{$index}})">
+								                <input  type="number" min="0" max="1" step="0.01" oninput="formatNumber(this, 1)" wire:model.defer="questions.{{$questionId}}.{{ $index }}.otherFte" class="form-control number" wire:blur="updateFte({{$questionId}}, {{$index}})">
 								                @error("questions.$questionId.$index.otherFte") <span class="text-danger">{{ $message }}</span> @enderror
 								            </td>
 								            <td>
