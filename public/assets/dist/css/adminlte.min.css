@@ -183,3 +183,11 @@ form .table td, form  .table th{padding: 5px;}
     top: -22px;
     left: calc(50% - 26px);
 }
+
+.data-percentage{
+  font-size:15px;
+}
+
+.question-percentage .form-group label.form-check-label {
+    min-width: 250px;
+}
