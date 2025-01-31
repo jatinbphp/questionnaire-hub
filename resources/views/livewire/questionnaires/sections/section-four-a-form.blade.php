@@ -69,6 +69,28 @@
 			                        </tr>
 			                        @php $questionId++; @endphp
 			                    @endforeach
+
+			                    <tr bgcolor="#f4f6f9">
+							        <th>Of these, how many were:</th>
+							        @foreach (getYears() as $year)
+							            <td></td>
+							        @endforeach
+							    </tr>
+
+			                    @php
+								$extQuestionId = 265;
+								@endphp
+								<tr>
+		                            <th>4.2.1.1 OPTIONS to a SOUTH AFRICAN ENTITY/IES</th>
+		                            @foreach (getYears() as $year)
+		                                <td>
+		                                    <input class="form-control" oninput="formatNumber(this)" type="text" wire:model="questions.{{ $extQuestionId }}.{{ $year }}" wire:blur="updateIpTransactionTotalNew({{$year}})">
+		                                    @error("questions.{$extQuestionId}.{$year}")
+					                            <small class="text-danger w-100 d-block"><strong>{{ $message }}</strong></small>
+					                        @enderror
+		                                </td>
+		                            @endforeach
+		                        </tr>
 			                </tbody>
 			            </table>
 		            </div>

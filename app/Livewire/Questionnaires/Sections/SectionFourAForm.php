@@ -48,6 +48,12 @@ class SectionFourAForm extends Component
         $messages["questions.$questionId.ip_transactions_4_1.required"] = "This field is required.";                
         $questionId++;
 
+        $extQuestionId = 265;
+        foreach (getYears() as $year){
+            $rules["questions.$extQuestionId.$year"] = 'required_if:questions.181.ip_transactions_4_1,Yes';
+            $messages["questions.$extQuestionId.$year.required_if"] = "This field is required.";
+        }
+
         for ($i = 182; $i <= 200; $i++) {
             foreach (getYears() as $year){
 
@@ -304,7 +310,7 @@ class SectionFourAForm extends Component
     public function updateIpTransactionTotalNew($yearValue){
         $ipTransactions = 0;
 
-        $fieldArray = [186,188,191,193,195];
+        $fieldArray = [186,188,191,193,195,265];
 
         foreach ($fieldArray as $key => $value) {
             foreach (getYears() as $year){
