@@ -135,62 +135,62 @@
 						                    	{{ $row['number'] }}
 						                    </td>
 						                    <td class="black-right text-center">
-						                    	@if(isset($questions[$questionId][$index]['type']) && !empty($questions[$questionId][$index]['type'])) 
+						                    	@if(isset($questions[$questionId][$index]['type'])) 
 						                            {{ $staffingOfTheTtf[$questions[$questionId][$index]['type']] ?? '' }}
 						                        @endif
 								            </td>
 								            <td class="black-right text-center">
-								            	@if(isset($questions[$questionId][$index]['gender']) && !empty($questions[$questionId][$index]['gender'])) 
+								            	@if(isset($questions[$questionId][$index]['gender'])) 
 						                            {{ $staffingOfTheTtfGender[$questions[$questionId][$index]['gender']] ?? '' }}
 						                        @endif
 								            </td>
 								            <td class="black-right text-center">
-								            	@if(isset($questions[$questionId][$index]['level']) && !empty($questions[$questionId][$index]['level'])) 
+								            	@if(isset($questions[$questionId][$index]['level'])) 
 						                            {{ $staffingOfTheTtfB[$questions[$questionId][$index]['level']] ?? '' }}
 						                        @endif
 								            </td>
 								            <td>
-								            	@if(isset($questions[$questionId][$index]['degree1']) && !empty($questions[$questionId][$index]['degree1'])) 
+								            	@if(isset($questions[$questionId][$index]['degree1'])) 
 								            		{{ $staffingOfTheTtfC[$questions[$questionId][$index]['degree1']] ?? '' }}
 						                        @endif
 								            </td>
 								            <td class="black-right text-center">
-								            	@if(isset($questions[$questionId][$index]['subject1']) && !empty($questions[$questionId][$index]['subject1'])) 
+								            	@if(isset($questions[$questionId][$index]['subject1'])) 
 								            		{{ $staffingOfTheTtfD[$questions[$questionId][$index]['subject1']] ?? '' }}
 						                        @endif
 								            </td>
 								            <td>
-								            	@if(isset($questions[$questionId][$index]['degree2']) && !empty($questions[$questionId][$index]['degree2'])) 
+								            	@if(isset($questions[$questionId][$index]['degree2'])) 
 								            		{{ $staffingOfTheTtfC[$questions[$questionId][$index]['degree2']] ?? '' }}
 						                        @endif
 								            </td>
 								            <td class="black-right text-center">
-								            	@if(isset($questions[$questionId][$index]['subject2']) && !empty($questions[$questionId][$index]['subject2'])) 
+								            	@if(isset($questions[$questionId][$index]['subject2'])) 
 						                            {{ $staffingOfTheTtfD[$questions[$questionId][$index]['subject2']] ?? '' }}
 						                        @endif
 								            </td>
 								            <td class="black-right text-center">
-								            	@if(isset($questions[$questionId][$index]['title']) && !empty($questions[$questionId][$index]['title'])) 
+								            	@if(isset($questions[$questionId][$index]['title'])) 
 						                            {{ $staffingOfTheTtfE[$questions[$questionId][$index]['title']] ?? '' }}
 						                        @endif
 								            </td>
 								            <td class="black-right text-center">
-								            	@if(isset($questions[$questionId][$index]['years']) && !empty($questions[$questionId][$index]['years'])) 
+								            	@if(isset($questions[$questionId][$index]['years'])) 
 						                            {{ $questions[$questionId][$index]['years'] ?? '' }}
 						                        @endif
 								            </td>
 								            <td>
-								            	@if(isset($questions[$questionId][$index]['ttfFte']) && !empty($questions[$questionId][$index]['otherFte'])) 
+								            	@if(isset($questions[$questionId][$index]['ttfFte'])) 
 						                            {{$questions[$questionId][$index]['otherFte']}}
 						                        @endif
 								            </td>
 								            <td>
-								            	@if(isset($questions[$questionId][$index]['otherFte']) && !empty($questions[$questionId][$index]['otherFte'])) 
+								            	@if(isset($questions[$questionId][$index]['otherFte'])) 
 						                            {{$questions[$questionId][$index]['otherFte']}}
 						                        @endif
 								            </td>
 								            <td>
-								            	@if(isset($questions[$questionId][$index]['totalFte']) && !empty($questions[$questionId][$index]['totalFte'])) 
+								            	@if(isset($questions[$questionId][$index]['totalFte'])) 
 						                            {{$questions[$questionId][$index]['totalFte']}}
 						                        @endif
 								            </td>
