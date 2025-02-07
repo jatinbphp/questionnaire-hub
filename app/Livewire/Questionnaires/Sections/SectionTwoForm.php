@@ -35,6 +35,13 @@ class SectionTwoForm extends Component
         $this->questions = getSectionWiseFormData(2);
         $sectionCompleted = InstitutionsCompletedSection::where('institution_id', Auth::user()->institution_id)->where('section_id', 2)->count();
         $this->completedStatus = ($sectionCompleted > 0) ? 'Completed' : 'Pending';
+
+        if (!isset($this->questions[58]) || empty($this->questions[58])) {
+            $this->questions[58][0] = [
+                'number' => 1, // Default value
+                // Add other required fields with default values
+            ];
+        }
     }   
 
     public function setSubmitType($type){
